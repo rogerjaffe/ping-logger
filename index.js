@@ -5,6 +5,7 @@ const DELAY = 5000;                 // milliseconds
 const ping = require('ping');
 const winston = require("winston");
 const DailyRotateFile = require("winston-daily-rotate-file");
+let wasDown = false;
 
 const logFormat = winston.format.printf(
   ({ timestamp, status }) => {
@@ -37,7 +38,17 @@ const log = status => {
 
 const pingMe = ip => () => {
   ping.sys.probe(ip, isAlive => {
-    log(isAlive ? 'Up' : 'Down');
+    if (isAlive) {
+      if (wasDown) {
+        log("Connection restored");
+      }
+      wasDown = false;
+    } else {
+      if (!wasDown) {
+        log("Connection lost");
+      }
+      wasDown = true;
+    }
   })
 }
 
