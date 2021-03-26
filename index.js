@@ -1,8 +1,10 @@
 'use strict';
+const MONITOR_IP = '8.8.8.8';       // IP to ping
+const DELAY = 5000;                 // milliseconds
+
 const ping = require('ping');
 const winston = require("winston");
 const DailyRotateFile = require("winston-daily-rotate-file");
-const MONITOR_IP = '8.8.8.8';
 
 const logFormat = winston.format.printf(
   ({ timestamp, status }) => {
@@ -40,4 +42,4 @@ const pingMe = ip => () => {
 }
 
 log(`Pinging ${MONITOR_IP}!`);
-setInterval(pingMe(MONITOR_IP), 5000);
+setInterval(pingMe(MONITOR_IP), DELAY);
