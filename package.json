@@ -1,0 +1,30 @@
+{
+  "name": "ping-logger",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogerjaffe/ping-logger.git"
+  },
+  "author": "Roger Jaffe <rogerjaffe@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/rogerjaffe/ping-logger/issues"
+  },
+  "homepage": "https://github.com/rogerjaffe/ping-logger/#readme",
+  "license": "MIT",
+  "keywords": [
+    "ping",
+    "logger",
+    "ping-logger",
+    "uptime"
+  ],
+  "dependencies": {
+    "ping": "^0.4.0",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.1"
+  }
+}
